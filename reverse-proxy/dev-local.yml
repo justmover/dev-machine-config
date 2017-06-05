@@ -1,0 +1,10 @@
+nginx:
+  container_name: dev-reverse-proxy
+  image: jwilder/nginx-proxy
+  volumes:
+    - ./nginx_custom.conf:/etc/nginx/conf.d/custom.conf:ro
+    - /etc/nginx/certs
+    - /var/run/docker.sock:/tmp/docker.sock
+  ports:
+    - "80:80"
+    - "443:443"
